@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Aegins 官方充值</title>
+	<meta name="keywords" content="Aegins,SLPay"/>
+	<meta name="description" content="安捷官方充值渠道三(速龙)" />
+	<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+	<div class="container">
+		<img class="l-t-i" src="./images/l-t-i.png" alt="">
+
+		<div class="cont-b">
+			<form class="re-f" action="lib/gateway.php" method="post" target="_blank">
+				<div class="input-group clearfix">
+					<span class="i-t-s pull-left">客户信息：</span>
+					<div class="i-c-b pull-left">
+						<input name="notice" type="text" placeholder="请输入名称或备注">
+					</div>
+					<span class="tip"></span>					
+				</div>
+				<div class="input-group clearfix">
+					<span class="i-t-s pull-left">充值金额：</span>
+					<div class="i-c-b pull-left">
+						<input name="faceValue" type="text" placeholder="请输入充值金额">
+					</div>
+					<span class="tip"></span>					
+				</div>
+				<div class="input-group clearfix">
+					<span class="i-t-s pull-left">支付方式：</span>
+					<div class="i-c-b pull-left clearfix">
+						<label for="payType-1">
+							<input id="payType-1" name="payType" type="radio" value="ICBC" checked="checked"><img src="./images/payType/payType-1.gif" alt="中国工商银行">
+						</label>
+						<label for="payType-2">
+							<input id="payType-2" name="payType" type="radio" value="CEBB"><img src="./images/payType/payType-2.gif" alt="中国光大银行">
+						</label>
+						<label for="payType-3">
+							<input id="payType-3" name="payType" type="radio" value="GDB"><img src="./images/payType/payType-3.gif" alt="广东发展银行">
+						</label>
+						<label for="payType-4">
+							<input id="payType-4" name="payType" type="radio" value="HXB"><img src="./images/payType/payType-4.gif" alt="华夏银行">
+						</label>
+						<label for="payType-5">
+							<input id="payType-5" name="payType" type="radio" value="CCB"><img src="./images/payType/payType-5.gif" alt="中国建设银行">
+						</label>
+						<label for="payType-6">
+							<input id="payType-6" name="payType" type="radio" value="BCOM"><img src="./images/payType/payType-6.gif" alt="交通银行">
+						</label>
+						<label for="payType-7">
+							<input id="payType-7" name="payType" type="radio" value="CMBC"><img src="./images/payType/payType-7.gif" alt="中国民生银行">
+						</label>
+						<label for="payType-8">
+							<input id="payType-8" name="payType" type="radio" value="ABC"><img src="./images/payType/payType-8.gif" alt="中国农业银行">
+						</label>
+						<label for="payType-9">
+							<input id="payType-9" name="payType" type="radio" value="SPDB"><img src="./images/payType/payType-9.gif" alt="上海浦东发展银行">
+						</label>
+						<!--<label for="payType-10">
+							<input id="payType-10" name="payType" type="radio" value="SDB"><img src="./images/payType/payType-10.gif" alt="深圳发展银行">
+						</label>-->
+						<label for="payType-11">
+							<input id="payType-11" name="payType" type="radio" value="PSBC"><img src="./images/payType/payType-11.gif" alt="中国邮政">
+						</label>
+						<label for="payType-12">
+							<input id="payType-12" name="payType" type="radio" value="CMB"><img src="./images/payType/payType-12.gif" alt="中国招商银行">
+						</label>
+						<label for="payType-13">
+							<input id="payType-13" name="payType" type="radio" value="BOC"><img src="./images/payType/payType-13.gif" alt="中国银行">
+						</label>
+						<!--<label for="payType-14">
+							<input id="payType-14" name="payType" type="radio" value="WECHAT"><img src="./images/payType/payType-14.png" alt="微信支付">
+						</label>
+						<label for="payType-15">
+							<input id="payType-15" name="payType" type="radio" value="ALIPAY"><img src="./images/payType/payType-15.png" alt="支付宝">
+						</label>-->
+					</div>					
+				</div>
+				<input id="submitBtn" type="submit" value="提交">
+			</form>
+			<p class="under_p">© 2018 Aegins International Technologies, Inc. All rights reserved.</p>
+		</div>
+	</div>
+	<script src="./js/jquery.min.js"></script>
+	<script src="./js/common.js"></script>
+	<script>
+		$(document).ready(function(){
+			
+			$(document).on("click","#submitBtn",function(){
+
+				var vNotice = $('input[name="notice"]').val();
+
+				var vFaceValue = $('input[name="faceValue"]').val();
+
+				var reg = /(^[1-9]([0-9]+)?(\.[0-9]{1,2})?$)|(^(0){1}$)|(^[0-9]\.[0-9]([0-9])?$)/;
+
+				if( !vNotice ){
+
+					alert("请输入客户信息或备注");
+
+					return false;
+				};
+
+				if( !reg.test(vFaceValue) ){
+
+					alert("请输入正确的金额");
+
+					$('input[name="faceValue"]').val("");
+
+					return false;
+
+				};
+
+                if( vFaceValue > 50000 ){
+
+                    alert("单笔金额不能超过50000");
+
+                    $('input[name="faceValue"]').val("");
+
+                    return false;
+
+                };
+
+			});
+
+		})
+	</script>
+</body>
+</html>
